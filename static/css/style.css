@@ -117,14 +117,23 @@ footer{
 
 .torrent-item {
   display: block;
+  white-space: nowrap;
 }
 
 .torrent-item>.torrent-item {
   margin-left: 25px;
 }
 
-.torrent-item {
-  white-space: nowrap;
+.torrent-item.directory > .material-icons {
+  cursor: pointer;
+}
+
+.shrink>.torrent-item{
+  display: none;
+}
+
+.expand>.torrent-item{
+  display: block;
 }
 
 @keyframes appearJump {

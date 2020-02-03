@@ -82,6 +82,7 @@ class TorrentList{
       } else {
         let root = torrent.info.name
         filesHTML = this.fileHTML(torrent.info.name)
+        filesHTML.className = 'torrent-item directory expand' // Expandimos el primer directorio
         fileArr[root] = {'html': filesHTML, 'childs': []}
         torrent.info.files.forEach(function(file){
           totalSize = totalSize + file.length
@@ -148,7 +149,6 @@ class TorrentList{
       floatWindow.appendChild(closeButton)
       document.body.appendChild(bgLayer)
       document.body.appendChild(floatWindow)
-      
     }.bind(this))
   }
   
@@ -163,9 +163,16 @@ class TorrentList{
     file.appendChild(filename)
     if (size == ''){
       filename.innerText  = name
-      file.className      = 'torrent-item directory' 
+      file.className      = 'torrent-item directory shrink' 
       icon.innerHTML      = 'folder'
       icon.className = "material-icons circle yellow-text"
+      icon.onclick = function(){
+        if (file.className.indexOf('shrink')>-1){
+          file.className = file.className.replace('shrink', 'expand')
+        } else {
+          file.className = file.className.replace('expand', 'shrink')
+        }
+      }.bind(file)
     }else{
       filename.innerText  = name+' - ( '+this.textFileSize(size)+' )'
       file.className      = 'torrent-item file'
