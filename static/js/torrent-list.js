@@ -161,15 +161,16 @@ class TorrentList{
     let icon = document.createElement('i')
     file.appendChild(icon)
     file.appendChild(filename)
-    icon.className = "material-icons circle white-text"
     if (size == ''){
       filename.innerText  = name
       file.className      = 'torrent-item directory' 
       icon.innerHTML      = 'folder'
+      icon.className = "material-icons circle yellow-text"
     }else{
       filename.innerText  = name+' - ( '+this.textFileSize(size)+' )'
       file.className      = 'torrent-item file'
       icon.innerHTML      = 'insert_drive_file'
+      icon.className = "material-icons circle white-text"
     }
     return file;
   }
