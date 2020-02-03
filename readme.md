@@ -22,10 +22,7 @@ Este proyecto es un ligero script para poder realizar un directorio web ordenado
 
 ### Acerca del Bencode en Javascript nativo
 
-El código que utilizo para hacer bencode directamente en el lado del cliente es el resultado de copia y "traducir" partes de otros 2 códigos:
-
-[bencode_online](https://github.com/Chocobo1/bencode_online)
-[node-bencode](https://github.com/themasch/node-bencode)
+El código que utilizo para hacer bencode directamente en el lado del cliente es el resultado de copia y "traducir" partes de otros 2 códigos: [bencode_online](https://github.com/Chocobo1/bencode_online) y [node-bencode](https://github.com/themasch/node-bencode).
 
 El primero hace uso del segundo como librería, además de usar typescript y webpack para correr en el navegador. Como mi idea era tener algo sencilo y directo, tomé los códigos de ambos y lo hice funcionar directamente en javascript nativo en el navegador sin necesidad de usar webpack.
 
