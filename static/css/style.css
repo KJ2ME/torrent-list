@@ -1,0 +1,158 @@
+body{
+  position:relative;
+  min-height: 100vh;
+}
+
+footer{
+  position: absolute;
+  bottom: 10px;
+  right: 10px; 
+}
+
+.content {
+  padding: 20px 10px 50px 10px;
+}
+
+.file-item {
+  display: inline-block;
+  text-align: center;
+  width: 150px;
+  margin: 3px;
+}
+
+.file-item:hover {
+  background: #9fe6ee;
+  cursor: pointer;
+}
+
+.file-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 150px;
+}
+
+.file-item:hover > .file-name {
+  white-space: break-spaces;
+  float: left;
+  text-overflow: unset;
+  position: fixed;
+  background: #9fe6ee;
+}
+
+.breadcrumb {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  /*font-weight: bold;*/
+}
+
+.nav-wrapper {
+  padding-left: 20px;
+  background: #48b9c7;
+}
+
+
+.bglayer {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: #0000002e;
+}
+
+.floatWindow {
+  position: fixed;
+  width: 900px;
+  max-width: 90vw;
+  top: 15vh;
+  background: white;
+  box-shadow: 0px 0px 14px black;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  animation: appearJump 0.3s;
+}
+
+.floatWindow .btn {
+  background-color: #48b9c7; 
+}
+
+.close-btn{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: grey;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.titleList {
+  background: #48b9c7; 
+  display: block;
+  margin: 20px 20px 0px 20px;
+  color: white;
+}
+
+.floatList{
+  text-align: left;
+  margin: 0px 20px 20px 20px;
+  border: 1px solid #ccc;
+  max-height: 40vh;
+  max-width: 100%;
+  overflow: scroll;
+  padding: 5px;
+}
+
+.floatList .material-icons.circle.white-text {
+  background: #48b9c7;
+  padding: 5px;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.torrent-item {
+  display: block;
+}
+
+.torrent-item>.torrent-item {
+  margin-left: 25px;
+}
+
+.torrent-item {
+  white-space: nowrap;
+}
+
+@keyframes appearJump {
+  0% {
+    transform: scale(.7);
+  }
+
+  45% {
+    transform: scale(1.05);
+  }
+
+  80% {
+    transform: scale(.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes disapearJump{
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(.5);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {"type":"directory","name":"files/","contents":[
+    {"type":"directory","name":"carpeta1","contents":[
+      {"type":"directory","name":"subcarpeta","contents":[
+        {"type":"file","name":"ejemplo-torrent.torrent"},
+        {"type":"directory","name":"subSupcarpeta","contents":[
+          {"type":"file","name":"404.gif.torrent"},
+          {"type":"file","name":"ejemplo-torrent.torrent"}
+        ]}
+      ]}
+    ]},
+    {"type":"directory","name":"debian","contents":[
+      {"type":"file","name":"debian-live-10.2.0-amd64-cinnamon.iso.torrent"},
+      {"type":"file","name":"debian-live-10.2.0-amd64-gnome.iso.torrent"},
+      {"type":"file","name":"debian-live-10.2.0-amd64-kde.iso.torrent"},
+      {"type":"file","name":"debian-live-10.2.0-amd64-lxde.iso.torrent"},
+      {"type":"file","name":"debian-live-10.2.0-amd64-lxqt.iso.torrent"},
+      {"type":"file","name":"debian-live-10.2.0-amd64-mate.iso.torrent"},
+      {"type":"file","name":"debian-live-10.2.0-amd64-standard.iso.torrent"},
+      {"type":"file","name":"debian-live-10.2.0-amd64-xfce.iso.torrent"}
+    ]},
+    {"type":"file","name":"ejemplo-torrent.torrent"},
+    {"type":"directory","name":"test-folder","contents":[
+      {"type":"file","name":"404.gif.torrent"}
+    ]},
+    {"type":"file","name":"The X-Files (1993) Season 1-9 S01-09 (Bluray 1080p x265 HEVC 10bit AAC 5.1 Qman) [UTR].18f75b0fd0f04e3a (Example torrent, not works for downlad the x-files, sorry).torrent"}
+  ]},
+  {"type":"report","directories":5,"files":14}
+]
