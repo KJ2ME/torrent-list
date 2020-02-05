@@ -204,7 +204,7 @@ class TorrentList{
       dlButton.innerHTML    = 'Descargar <i class="material-icons right">arrow_drop_down_circle</i>'
       closeButton.innerText = 'X'
       
-      closeButton.onclick = function(){
+      closeButton.onclick = bgLayer.onclick = function(){
         floatWindow.style.animation = "disapearJump 0.3s"
         bgLayer.remove()
         setTimeout(function(){
