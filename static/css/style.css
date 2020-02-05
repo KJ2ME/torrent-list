@@ -3,6 +3,13 @@ body{
   min-height: 100vh;
 }
 
+nav {
+  height:  min-content !important;
+  min-height: 64px;
+  padding-left: 20px;
+  background: #48b9c7;
+}
+
 footer{
   position: absolute;
   bottom: 10px;
@@ -46,12 +53,6 @@ footer{
   user-select: none;
   /*font-weight: bold;*/
 }
-
-.nav-wrapper {
-  padding-left: 20px;
-  background: #48b9c7;
-}
-
 
 .bglayer {
   position: absolute;
@@ -124,8 +125,9 @@ footer{
   margin-left: 25px;
 }
 
-.torrent-item.directory > .material-icons {
+.torrent-item.directory > .material-icons{
   cursor: pointer;
+  user-select: none;
 }
 
 .shrink>.torrent-item{
@@ -134,6 +136,16 @@ footer{
 
 .expand>.torrent-item{
   display: block;
+}
+
+.search-bar input::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
+#search-tl {
+  border-bottom: 1px solid #fff;
+  color: white;
 }
 
 @keyframes appearJump {

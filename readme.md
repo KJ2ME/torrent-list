@@ -4,15 +4,16 @@ Este proyecto es un ligero script para poder realizar un directorio web ordenado
 
 ## Características
 
-1. Uso de breadcrumbs (barra superior)
-2. Navegación en pseudo-directorios
-3. Vista previa de la información de los archivos torrent
-4. Descarga de los archivos torrent
+1. Uso de breadcrumbs (barra superior).
+2. Navegación en pseudo-directorios.
+3. Vista previa de la información de los archivos torrent.
+4. Descarga de los archivos torrent.
+5. Búsqueda de archivos (mínimo 3 caracteres)
 
 ## TO DO
 
-1. [ ] Búsqueda de archivos (barra superior)
-2. [ ] Descarga mediante webtorrent
+1. [x] Búsqueda de archivos (barra superior).
+2. [ ] Descarga mediante webtorrent.
 
 ## Instalación y uso
 
@@ -20,7 +21,7 @@ Este proyecto es un ligero script para poder realizar un directorio web ordenado
 2. Ejecuta el archivo `./update-files.sh` para actualizar la lista de archivos (files.json).
 3. Sube los archivos.
 
-### Acerca del Bencode en Javascript nativo
+### Acerca del Bencode en Javascript
 
 El código que utilizo para hacer bencode directamente en el lado del cliente es el resultado de copia y "traducir" partes de otros 2 códigos: [bencode_online](https://github.com/Chocobo1/bencode_online) y [node-bencode](https://github.com/themasch/node-bencode).
 

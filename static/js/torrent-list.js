@@ -6,9 +6,16 @@
 
 class TorrentList{
   constructor(){
-    this.content     = document.querySelector('.content')
-    this.breadcrumbs = document.querySelector('#breadcrumbs')
-    this.path        = ''
+    this.content      = document.querySelector('.content')
+    this.breadcrumbs  = document.querySelector('#breadcrumbs')
+    this.searchInput  = document.querySelector('#search-tl')
+    this.path         = ''
+    this.filesCurrent = []
+    
+    this.searchInput.onkeyup = function(){
+      this.search(this.searchInput.value)
+    }.bind(this)
+    
     this.loadList()
   }
   
@@ -19,6 +26,7 @@ class TorrentList{
     fetch('files.json').then(function(res){
       return res.json()
     }).then(function(res){
+      this.filesCurrent = res[0].contents
       this.addBreadcrumb('Inicio', res[0].contents)
       this.showFiles(res[0].contents, '')
     }.bind(this))
@@ -27,7 +35,7 @@ class TorrentList{
   /*
   * Imprime en this.content las carpetas y archivos que recibe
   */
-  showFiles(files, path){
+  showFiles(files){
     this.content.innerHTML = ''
     files.forEach(function(file){
 
@@ -44,7 +52,8 @@ class TorrentList{
         if (file.type=='directory'){
           name.innerText  = file.name
           html.onclick = function(){
-            this.path += file.name+'/'
+            this.path        += file.name+'/'
+            this.filesCurrent = file
             this.addBreadcrumb(file.name, file.contents)
             this.showFiles(file.contents)
           }.bind(this, file)
@@ -57,6 +66,74 @@ class TorrentList{
         
         this.content.appendChild(html)
     }.bind(this))
+  }
+  
+  /*
+  * Recibe una búsqueda, llama a una búsqueda recursiva e imprime
+  * el resultado el resultado en html.
+  */
+  search(query){
+    if (query.trim()=='' || query.length<3)
+      return this.showFiles(this.filesCurrent)
+      
+    query = query.toUpperCase()
+    console.log(this.filesCurrent)
+    let result = this.recursiveSearch(this.filesCurrent, query)
+    this.content.innerHTML = ''
+    result.forEach(function(file){
+      this.content.appendChild(file)
+    }.bind(this))
+  }
+  
+  recursiveSearch(files, query, path = []){
+    let result = []
+    console.log(path)
+    files.forEach(function(file){
+      if (file.name.toUpperCase().indexOf(query)>=0){
+        let html  = document.createElement('div')
+        let name  = document.createElement('div')
+        let img   = document.createElement('img')
+        img.src   = 'static/img/'+file.type+'.png'
+        
+        html.appendChild(img)
+        html.appendChild(name)
+        html.className = 'file-item'
+        name.className = 'file-name'
+      
+        if (file.type=='directory'){
+          name.innerText  = file.name
+          html.onclick = function(){
+            path.forEach(function(dir){
+              this.path        += dir.name+'/'
+              this.addBreadcrumb(dir.name, dir.contents)
+            }.bind(this))
+            this.path        += file.name+'/'
+            this.filesCurrent = file
+            this.addBreadcrumb(file.name, file.contents)
+            this.showFiles(file.contents)
+          }.bind(this, file, path)
+        }else{
+          name.innerText  = file.name.slice(0,-8)
+          html.onclick = function(){
+            let route = ''
+            path.forEach(function(dir){
+              route        += dir.name+'/'
+            }.bind(route))
+            this.showInfo(route+file.name)
+          }.bind(this)
+        }
+        result.push(html)
+      }
+      
+      if (file.type=='directory'){
+        let pathCopy = path.slice(0) // Hacemos una copia de "path"
+        pathCopy.push(file)
+        let subResult = this.recursiveSearch(file.contents, query, pathCopy)
+        result = result.concat(subResult)
+      }
+      
+    }.bind(this))
+    return result
   }
   
   /*
@@ -107,8 +184,6 @@ class TorrentList{
         }.bind(this))
       }
       
-      // totalSize
-      // torrent.info.name
       let floatWindow = document.createElement('div')
       let bgLayer     = document.createElement('div')
       let floatList   = document.createElement('div')
@@ -217,14 +292,17 @@ class TorrentList{
   addBreadcrumb(name, files){
     let breadcrumb       = document.createElement('div')
     let actualPath       = this.path
+    let actualFiles      = this.filesCurrent
+    
     breadcrumb.className = 'breadcrumb'
     breadcrumb.innerText = name
     
     breadcrumb.onclick = function(){
       this.showFiles(files)
-      this.path = actualPath
+      this.path         = actualPath
+      this.filesCurrent = actualFiles
       this.clearBreacumbs(breadcrumb)
-    }.bind(this, files, breadcrumb, actualPath)
+    }.bind(this)
     
     this.breadcrumbs.appendChild(breadcrumb)
   }
