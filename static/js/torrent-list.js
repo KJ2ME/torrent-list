@@ -104,6 +104,7 @@ class TorrentList{
         if (file.type=='directory'){
           name.innerText  = file.name
           html.onclick = function(){
+            this.searchInput.value = ''
             path.forEach(function(dir){
               this.path        += dir.name+'/'
               this.addBreadcrumb(dir.name, dir.contents)
