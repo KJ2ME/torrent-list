@@ -12,7 +12,8 @@ class TorrentList{
     this.path         = ''
     this.filesCurrent = []
     
-    this.searchInput.onkeyup = function(){
+    this.searchInput.onkeyup = function(event){
+      if(event.which==27) this.searchInput.value = ''
       this.search(this.searchInput.value)
     }.bind(this)
     
