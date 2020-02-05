@@ -125,7 +125,8 @@ footer{
   margin-left: 25px;
 }
 
-.torrent-item.directory > .material-icons{
+.torrent-item.directory > .material-icons,
+.torrent-item.directory > span{
   cursor: pointer;
   user-select: none;
 }

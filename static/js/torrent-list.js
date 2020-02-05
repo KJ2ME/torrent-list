@@ -241,7 +241,7 @@ class TorrentList{
       file.className      = 'torrent-item directory shrink' 
       icon.innerHTML      = 'folder'
       icon.className = "material-icons circle yellow-text"
-      icon.onclick = function(){
+      icon.onclick = filename.onclick = function(){
         if (file.className.indexOf('shrink')>-1){
           file.className = file.className.replace('shrink', 'expand')
         } else {
