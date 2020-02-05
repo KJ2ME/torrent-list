@@ -2,6 +2,8 @@
 
 Este proyecto es un ligero script para poder realizar un directorio web ordenado de archivos ".torrent", con vista previa de su contenido (para poder revisar bien que te descargarás antes que nada).
 
+### [Demo](https://kj2me.github.io/torrent-list/)
+
 ## Características
 
 1. Uso de breadcrumbs (barra superior).
