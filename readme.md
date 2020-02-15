@@ -11,11 +11,12 @@ Este proyecto es un ligero script para poder realizar un directorio web ordenado
 3. Vista previa de la información de los archivos torrent.
 4. Descarga de los archivos torrent.
 5. Búsqueda de archivos (mínimo 3 caracteres)
+6. Descarga mediante webtorrent (limitado a torrents con un único archivo).
 
 ## TO DO
 
 1. [x] Búsqueda de archivos (barra superior).
-2. [ ] Descarga mediante webtorrent.
+2. [x] Descarga mediante webtorrent.
 
 ## Instalación y uso
 
