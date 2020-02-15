@@ -149,7 +149,6 @@ class TorrentList{
       let buf = Buffer.from(await loadFile(res))
       let byteArray = decode(buf)
       let torrent = bytearrayToString(Object.assign({}, byteArray))
-      this.tmp = torrent
       
       let totalSize = 0
       let filesHTML = ''
@@ -191,6 +190,7 @@ class TorrentList{
       let floatList   = document.createElement('div')
       let floatTitle  = document.createElement('h4')
       let dlButton    = document.createElement('button')
+      let wtButton    = document.createElement('button')
       let closeButton = document.createElement('div')
       let titleList   = document.createElement('strong')
       
@@ -200,10 +200,12 @@ class TorrentList{
       floatList.className   = 'floatList'
       titleList.className   = 'titleList'
       dlButton.className    = 'btn'
+      wtButton.className    = 'btn'
       closeButton.className = 'close-btn'
       floatTitle.innerText  = 'Información de la descarga:'
       titleList.innerHTML   = 'Archivos del torrent - ('+this.textFileSize(totalSize)+')'
-      dlButton.innerHTML    = 'Descargar <i class="material-icons right">arrow_drop_down_circle</i>'
+      dlButton.innerHTML    = 'Descargar<i class="material-icons right">arrow_drop_down_circle</i>'
+      wtButton.innerHTML    = 'Webtorrent <i class="material-icons right">cloud</i>'
       closeButton.innerText = 'X'
       
       closeButton.onclick = bgLayer.onclick = function(){
@@ -218,15 +220,51 @@ class TorrentList{
         this.download(filename)
       }.bind(this)
       
+      wtButton.onclick = function(){
+        let a        = document.createElement('a')
+            a.target = '_blank'
+            a.href   = 'dl.html#'+btoa('files/'+this.path+filename)
+            a.click()
+      }.bind(this)
+      
       floatList.appendChild(filesHTML)
       floatWindow.appendChild(floatTitle)
       floatWindow.appendChild(titleList)
       floatWindow.appendChild(floatList)
+      if (typeof(torrent.info.files)=="undefined" && this.isWebtorrent(torrent)) // Solo mostrar si es un solo archivo y es webtorrent
+        floatWindow.appendChild(wtButton)
       floatWindow.appendChild(dlButton)
       floatWindow.appendChild(closeButton)
       document.body.appendChild(bgLayer)
       document.body.appendChild(floatWindow)
     }.bind(this))
+  }
+  
+  /*
+  * Recibe un objeto javascript con los datos del torrent
+  * y revisa si tiene algún tracker Websocket para saber
+  * si puede o no funcionar como WebTorrent.
+  */
+  
+  isWebtorrent(torrent){
+    if (typeof(torrent.announce) != "undefined" && 
+       (torrent.announce.substr(0,5) == 'ws://' ||
+        torrent.announce.substr(0,6) =='wss://')){
+      return true
+    }
+    
+    let result = false
+
+    if (typeof(torrent['announce-list']) != "undefined"){
+      torrent['announce-list'].forEach(function(announce){
+        if (announce[0].substr(0,5) == 'ws://' || 
+            announce[0].substr(0,6) =='wss://' ) {
+          result = true    
+        }
+      })
+    }
+    
+    return result
   }
   
   /*

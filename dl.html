@@ -1,0 +1,56 @@
+<html>
+ <head>
+  <meta charset="utf8">
+  <title>Descarga WebTorrent</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css"  media="screen,projection"/>
+  <link rel="stylesheet" href="static/css/style.css">
+ </head>
+ <body style="background: #eee;">
+  <div class="content center">
+    <div class="dlBox card">
+      <div class="card-content">
+        <div class="row">
+          <div id="player">
+          </div>
+          <div class="col s10">
+            <i class="large material-icons left grey-text">insert_drive_file</i>
+            <h4 id="filename"></h4>
+            <div id="filesize"></div>
+          </div>
+          <div class="center col s2">
+            <h4 id="percent">0%</h4>
+            <small id="status">Conectando</small>
+          </div>
+          <div class="progress col s12">
+            <div class="determinate" style="width: 0%"></div>
+          </div>
+          <div class="row center">
+          <div class="col s3" title="Peers">
+            <i class="material-icons circle white-text black">swap_vertical_circle</i>
+            <span id="peers">0</span>
+          </div>
+          <div class="col s3" title="Download Speed">
+            <i class="material-icons circle white-text black">arrow_downward</i>
+            <span id="downSpeed">0KB/s</span>
+          </div>
+          <div class="col s3" title="Upload speed">
+            <i class="material-icons circle white-text black">arrow_upward</i>
+            <span id="upSpeed">0KB/s</span>
+          </div>
+          <div class="col s3" title="Remaining Time">
+            <i class="material-icons circle white-text black">timer</i>
+            <span id="eta">~</span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>Powered by <a href="https://kj2.me/torrentlist-un-script-para-directorios-web-de-torrents/">TorrentList</a></footer>
+  <script type="text/javascript" src="static/js/webtorrent.min.js"></script>
+  <script type="text/javascript" src="static/js/bencode.js"></script>
+  <script type="text/javascript" src="static/js/dl.js"></script>
+  <script type="text/javascript" src="static/js/materialize.min.js"></script>
+ </body>
+</html>
