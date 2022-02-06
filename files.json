@@ -23,7 +23,15 @@
     {"type":"directory","name":"test-folder","contents":[
       {"type":"file","name":"404.gif.torrent"}
     ]},
-    {"type":"file","name":"The X-Files (1993) Season 1-9 S01-09 (Bluray 1080p x265 HEVC 10bit AAC 5.1 Qman) [UTR].18f75b0fd0f04e3a (Example torrent, not works for downlad the x-files, sorry).torrent"}
+    {"type":"file","name":"The X-Files (1993) Season 1-9 S01-09 (Bluray 1080p x265 HEVC 10bit AAC 5.1 Qman) [UTR].18f75b0fd0f04e3a (Example torrent, not works for downlad the x-files, sorry).torrent"},
+    {"type":"directory","name":"webtorrent-activado","contents":[
+      {"type":"directory","name":"Vídeos","contents":[
+        {"type":"file","name":"Naruto 090.torrent"},
+        {"type":"file","name":"Naruto 091.torrent"},
+        {"type":"file","name":"Naruto 092.torrent"}
+      ]},
+      {"type":"file","name":"webtorrent-desktop_0.21.0_amd64.torrent"}
+    ]}
   ]},
-  {"type":"report","directories":5,"files":14}
+  {"type":"report","directories":7,"files":18}
 ]
